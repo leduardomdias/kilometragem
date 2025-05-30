@@ -3,575 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Calculadora de Quilometragem | Ferramenta Profissional</title>
-    <meta name="description" content="Calculadora profissional para medição precisa de quilometragem">
+    <meta name="description" content="Calculadora profissional para medição precisa de quilometragem com fórmula avançada">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:title" content="Calculadora de Quilometragem Profissional">
+    <meta property="og:description" content="Calcule quilometragem com precisão usando nossa ferramenta profissional">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #F9A825;
-            --primary-light: #ffc046;
-            --primary-dark: #c67700;
-            --secondary-color: #FF9900;
-            --dark-color: #000000;
-            --dark-light: #121212;
-            --dark-lighter: #1a1a1a;
-            --text-color: #FFFFFF;
-            --text-secondary: #bbbbbb;
-            --accent-color: #FF9900;
-            --border-radius: 12px;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --transition-normal: all 0.3s ease;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-color);
-            background-image: radial-gradient(circle at top right, #0a0a0a 0%, #000000 100%);
-            background-attachment: fixed;
-            color: var(--text-color);
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Header */
-        .header {
-            background-color: var(--dark-color);
-            border-bottom: 3px solid var(--primary-color);
-            padding: 2.5rem 0 2rem;
-            position: relative;
-            overflow: hidden;
-            background-image: linear-gradient(to right, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.7));
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-        }
-        
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 40%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjEwMDAiPjxmaWx0ZXIgaWQ9ImEiIHg9IjAiIHk9IjAiPjxmZVR1cmJ1bGVuY2UgYmFzZUZyZXF1ZW5jeT0iLjIiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHR5cGU9ImZyYWN0YWxOb2lzZSIvPjxmZURpc3BsYWNlbWVudE1hcCBpbj0iU291cmNlR3JhcGhpYyIgc2NhbGU9IjUwIiB4Q2hhbm5lbFNlbGVjdG9yPSJSIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
-            background-size: cover;
-            opacity: 0.5;
-            z-index: 0;
-        }
-        
-        .header .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .logo-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 50px;
-            width: 50px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            margin-right: 15px;
-            box-shadow: 0 4px 10px rgba(249, 168, 37, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo i {
-            font-size: 1.5rem;
-            color: var(--dark-color);
-        }
-        
-        .logo::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent 80%);
-            border-radius: 50%;
-        }
-        
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin: 0;
-            font-size: 1.8rem;
-        }
-        
-        .lead {
-            font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        /* Main content */
-        .content-wrap {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 0;
-            position: relative;
-        }
-        
-        .content-wrap::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmOWE4MjUiIGZpbGwtb3BhY2l0eT0iLjA4Ii8+PC9zdmc+');
-            z-index: -1;
-            opacity: 0.2;
-        }
-        
-        .calculator-card {
-            background-color: var(--dark-lighter);
-            background-image: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-            border: none;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 500px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .calculator-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(249, 168, 37, 0.03) 0%, transparent 70%);
-            z-index: 0;
-        }
-        
-        .card-header {
-            background-color: rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(249, 168, 37, 0.2);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            padding: 1.2rem 1.5rem;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        .card-header i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-        
-        .card-body {
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Form styles */
-        .form-control, .form-select {
-            background-color: rgba(34, 34, 34, 0.7);
-            border: 1px solid #333;
-            color: var(--text-color);
-            border-radius: 8px;
-            padding: 0.8rem 1rem;
-            height: auto;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition-normal);
-        }
-        
-        .form-control:focus, .form-select:focus {
-            background-color: rgba(42, 42, 42, 0.7);
-            color: var(--text-color);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(249, 168, 37, 0.25);
-        }
-        
-        .form-label {
-            color: var(--text-secondary);
-            font-size: 0.85em;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .form-label i {
-            margin-right: 5px;
-            color: var(--primary-color);
-            font-size: 0.9rem;
-        }
-        
-        .input-info {
-            position: relative;
-            display: inline-block;
-            margin-left: 5px;
-        }
-        
-        .input-info i {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
-        
-        .input-info .tooltip-text {
-            visibility: hidden;
-            width: 200px;
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px;
-            position: absolute;
-            z-index: 3;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.8rem;
-            text-transform: none;
-            letter-spacing: normal;
-            border: 1px solid var(--primary-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .input-info .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: var(--primary-color) transparent transparent transparent;
-        }
-        
-        .input-info:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            border: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 8px;
-            color: #000;
-            padding: 0.8rem 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.7s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(249, 168, 37, 0.4);
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-        
-        .form-range {
-            height: 6px;
-            background: #333;
-            border-radius: 3px;
-            accent-color: var(--primary-color);
-        }
-        
-        .form-range::-webkit-slider-thumb {
-            background: var(--primary-color);
-            width: 18px;
-            height: 18px;
-            margin-top: -6px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            transition: all 0.2s ease;
-        }
-        
-        .form-range::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-        }
-        
-        .form-range::-moz-range-thumb {
-            background: var(--primary-color);
-            width: 18px;
-            height: 18px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            transition: all 0.2s ease;
-        }
-        
-        .form-range::-moz-range-thumb:hover {
-            transform: scale(1.1);
-        }
-        
-        #sizeValue {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 1.5rem;
-            transition: all 0.2s ease;
-        }
-        
-        /* Results section */
-        .result-box {
-            background: linear-gradient(145deg, #1c1c1c, #0f0f0f);
-            border-left: 3px solid var(--primary-color);
-            padding: 1.8rem;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .result-box.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .result-box::before {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(45deg, var(--primary-dark), transparent, var(--primary-dark));
-            z-index: -1;
-            border-radius: 15px;
-            opacity: 0.15;
-        }
-        
-        .result-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .result-title::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 3px;
-        }
-        
-        .kilometer-value {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            display: inline-block;
-        }
-        
-        .small-value {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-        
-        .value-highlight {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-        
-        .formula {
-            padding: 10px;
-            background-color: rgba(34, 34, 34, 0.5);
-            border-radius: 5px;
-            font-family: monospace;
-            font-size: 0.95rem;
-            display: inline-block;
-            margin-top: 5px;
-        }
-        
-        /* Toast notification */
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1050;
-        }
-        
-        .toast {
-            background-color: rgba(10, 10, 10, 0.95);
-            color: white;
-            border-left: 4px solid var(--primary-color);
-            border-radius: 5px;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 300px;
-            max-width: 100%;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.4s ease;
-        }
-        
-        .toast.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .toast-icon {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
-        
-        .toast-content {
-            flex: 1;
-        }
-        
-        .toast-title {
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-        
-        .toast-message {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .toast-close {
-            background: none;
-            border: none;
-            color: #999;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0;
-            margin-left: 15px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: #666;
-            padding: 1.5rem 0;
-            border-top: 1px solid rgba(249, 168, 37, 0.3);
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            margin-top: auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
-            z-index: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .header {
-                padding: 1.5rem 0;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            .card-body {
-                padding: 1.5rem;
-            }
-            
-            .kilometer-value {
-                font-size: 2.5rem;
-            }
-            
-            .toast-container {
-                left: 20px;
-                right: 20px;
-            }
-            
-            .toast {
-                width: auto;
-            }
-        }
-        
-        /* Glowing animation */
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 5px rgba(249, 168, 37, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(249, 168, 37, 0.4);
-            }
-            100% {
-                box-shadow: 0 0 5px rgba(249, 168, 37, 0.2);
-            }
-        }
-    </style>
+    
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
     <header class="header">
         <div class="container text-center">
             <div class="logo-area">
@@ -580,60 +34,78 @@
                 </div>
                 <h1>Calculadora de Quilometragem</h1>
             </div>
-            <p class="lead">Meça a quilometragem com precisão profissional</p>
+            <p class="lead">Meça a quilometragem de você sabe o que...</p>
         </div>
     </header>
 
     <div class="content-wrap">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="calculator-card card">
-                        <div class="card-header text-center">
-                            <i class="fas fa-calculator"></i> Calculadora
+                        <div class="card-header">
+                            <div>
+                                <i class="fas fa-calculator"></i> Calculadora Profissional
+                            </div>
+                            <div class="card-tools">
+                                <button id="resetButton" title="Redefinir formulário">
+                                    <i class="fas fa-sync-alt"></i> Redefinir
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <form id="distanceForm">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="months" class="form-label">
-                                            <i class="far fa-calendar-alt"></i> Tempo em Meses (M)
-                                            <span class="input-info">
-                                                <i class="fas fa-info-circle"></i>
-                                                <span class="tooltip-text">Insira o número total de meses de atividade.</span>
-                                            </span>
-                                        </label>
-                                        <input type="number" class="form-control" id="months" step="1" min="1" placeholder="Ex: 3">
+                           <div id="formContainer">
+                                <form id="distanceForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="months" class="form-label">
+                                                <i class="far fa-calendar-alt"></i> Tempo em Meses (M)
+                                                <span class="input-info">
+                                                    <i class="fas fa-info-circle"></i>
+                                                    <span class="tooltip-text">Insira o número total de meses de atividade. Valor mínimo: 1.</span>
+                                                </span>
+                                            </label>
+                                            <input type="number" class="form-control" id="months" step="1" min="1" placeholder="Ex: 3">
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="weekly" class="form-label">
+                                                <i class="fas fa-sync-alt"></i> Média Semanal (S)
+                                                <span class="input-info">
+                                                    <i class="fas fa-info-circle"></i>
+                                                    <span class="tooltip-text">Insira a frequência média por semana. Quanto maior, mais quilometragem.</span>
+                                                </span>
+                                            </label>
+                                            <input type="number" class="form-control" id="weekly" step="0.1" min="0" placeholder="Ex: 2.5">
+                                        </div>
                                     </div>
                                     
-                                    <div class="col-md-6 mb-3">
-                                        <label for="weekly" class="form-label">
-                                            <i class="fas fa-sync-alt"></i> Média Semanal (S)
+                                    <div class="mb-4">
+                                        <label for="size" class="form-label">
+                                            <i class="fas fa-ruler"></i> Tamanho (T)
                                             <span class="input-info">
                                                 <i class="fas fa-info-circle"></i>
-                                                <span class="tooltip-text">Insira a frequência média por semana.</span>
+                                                <span class="tooltip-text">Selecione um valor de 1 a 20 para o tamanho. Este valor multiplica o resultado final.</span>
                                             </span>
                                         </label>
-                                        <input type="number" class="form-control" id="weekly" step="0.1" min="0" placeholder="Ex: 2.5">
+                                        <input type="range" class="form-range" id="size" min="1" max="20" step="1" aria-labelledby="sizeValue">
+                                        <div class="range-track">
+                                            <div class="range-labels">
+                                                <span>Pequeno</span>
+                                                <span>Médio</span>
+                                                <span>Grande</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" id="sizeValue">10</div>
                                     </div>
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="size" class="form-label">
-                                        <i class="fas fa-ruler"></i> Tamanho (T)
-                                        <span class="input-info">
-                                            <i class="fas fa-info-circle"></i>
-                                            <span class="tooltip-text">Selecione um valor de 1 a 20 que representa o tamanho.</span>
-                                        </span>
-                                    </label>
-                                    <input type="range" class="form-range" id="size" min="1" max="20" step="1">
-                                    <div class="text-center mt-3" id="sizeValue">10</div>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-primary w-100">
-                                    <i class="fas fa-calculator me-1"></i> Calcular Quilometragem
-                                </button>
-                            </form>
+                                    
+                                    <div class="action-buttons">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-calculator me-2"></i> Calcular Quilometragem
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                             
                             <div id="resultBox" class="result-box d-none">
                                 <h4 class="mb-4 result-title">Resultado</h4>
@@ -658,6 +130,10 @@
                                         <p class="small-value">Tamanho (T): <span id="tValue" class="value-highlight">0</span></p>
                                     </div>
                                 </div>
+                                <div class="result-actions">
+                                    <button id="copyResultBtn"><i class="fas fa-copy"></i> Copiar Resultado</button>
+                                    <button id="newCalcBtn"><i class="fas fa-calculator"></i> Nova Calculadora</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -668,161 +144,14 @@
 
     <footer>
         <div class="container text-center">
-            <p>© 2025 Calculadora de Quilometragem | Desenvolvido por Profissionais para Profissionais | <span class="text-uppercase">Apenas para adultos (+18)</span></p>
+            <p>© 2025 Calculadora de Quilometragem | Desenvolvido por Calvin Kisin | <span class="text-uppercase">Apenas para adultos (+18)</span></p>
         </div>
     </footer>
 
-    <!-- Toast notifications container -->
     <div class="toast-container"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Configurar o slider de tamanho
-            const sizeSlider = document.getElementById('size');
-            const sizeValue = document.getElementById('sizeValue');
-            
-            // Inicializar o slider
-            sizeSlider.value = 10;
-            sizeValue.textContent = sizeSlider.value;
-            
-            sizeSlider.addEventListener('input', function() {
-                sizeValue.textContent = this.value;
-                // Efeito de tamanho do texto baseado no valor
-                const fontSize = 1 + (this.value / 20);
-                sizeValue.style.fontSize = `${fontSize}rem`;
-            });
-            
-            // Manipular envio do formulário
-            document.getElementById('distanceForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const months = parseFloat(document.getElementById('months').value);
-                const weekly = parseFloat(document.getElementById('weekly').value);
-                const size = parseInt(document.getElementById('size').value);
-                
-                // Validar entradas
-                if (!validateInputs(months, weekly, size)) {
-                    return;
-                }
-                
-                // Calcular resultados usando a fórmula: Kf = M × S × T × 19,2
-                const meters = months * weekly * size * 19.2;
-                // Converter para quilômetros
-                const kilometers = meters / 1000;
-                
-                // Mostrar resultados
-                document.getElementById('kilometers').textContent = kilometers.toFixed(1);
-                document.getElementById('mValue').textContent = months;
-                document.getElementById('sValue').textContent = weekly;
-                document.getElementById('tValue').textContent = size;
-                
-                const resultBox = document.getElementById('resultBox');
-                resultBox.classList.remove('d-none');
-                
-                // Efeito de animação
-                setTimeout(() => {
-                    resultBox.classList.add('show');
-                    
-                    // Mostrar notificação de sucesso
-                    showToast('Cálculo Concluído', 'Sua quilometragem foi calculada com sucesso.', 'success');
-                    
-                    // Scroll suave até os resultados
-                    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            });
-            
-            // Função de validação
-            function validateInputs(months, weekly, size) {
-                let isValid = true;
-                let errorMessage = '';
-                
-                if (!months || isNaN(months)) {
-                    errorMessage = 'Por favor, informe um valor válido para Tempo em Meses.';
-                    isValid = false;
-                } else if (months <= 0) {
-                    errorMessage = 'O Tempo em Meses deve ser maior que zero.';
-                    isValid = false;
-                }
-                
-                if (isValid && (!weekly || isNaN(weekly))) {
-                    errorMessage = 'Por favor, informe um valor válido para Média Semanal.';
-                    isValid = false;
-                } else if (isValid && weekly <= 0) {
-                    errorMessage = 'A Média Semanal deve ser maior que zero.';
-                    isValid = false;
-                }
-                
-                if (!isValid) {
-                    showToast('Erro no Formulário', errorMessage, 'error');
-                }
-                
-                return isValid;
-            }
-            
-            // Função para mostrar notificações
-            function showToast(title, message, type) {
-                const toastContainer = document.querySelector('.toast-container');
-                
-                const toast = document.createElement('div');
-                toast.classList.add('toast');
-                
-                const iconClass = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-                
-                toast.innerHTML = `
-                    <div class="toast-icon">
-                        <i class="${iconClass}"></i>
-                    </div>
-                    <div class="toast-content">
-                        <div class="toast-title">${title}</div>
-                        <div class="toast-message">${message}</div>
-                    </div>
-                    <button class="toast-close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                
-                toastContainer.appendChild(toast);
-                
-                // Mostrar o toast com animação
-                setTimeout(() => {
-                    toast.classList.add('show');
-                }, 10);
-                
-                // Configurar o botão de fechar
-                const closeButton = toast.querySelector('.toast-close');
-                closeButton.addEventListener('click', () => {
-                    toast.classList.remove('show');
-                    setTimeout(() => {
-                        toastContainer.removeChild(toast);
-                    }, 400);
-                });
-                
-                // Auto-fechar após 5 segundos
-                setTimeout(() => {
-                    if (toastContainer.contains(toast)) {
-                        toast.classList.remove('show');
-                        setTimeout(() => {
-                            if (toastContainer.contains(toast)) {
-                                toastContainer.removeChild(toast);
-                            }
-                        }, 400);
-                    }
-                }, 5000);
-            }
-            
-            // Melhorar a experiência do usuário com validação em tempo real
-            const inputs = document.querySelectorAll('input[type="number"]');
-            inputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    if (this.value && parseFloat(this.value) <= 0) {
-                        this.classList.add('is-invalid');
-                    } else {
-                        this.classList.remove('is-invalid');
-                    }
-                });
-            });
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" async></script>
 </body>
 </html>
