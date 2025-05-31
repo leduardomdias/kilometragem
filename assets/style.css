@@ -1,4 +1,4 @@
-        :root {
+:root {
             --primary-color: #F9A825;
             --primary-light: #ffc046;
             --primary-dark: #c67700;
@@ -769,3 +769,32 @@
                 gap: 8px;
             }
         }
+        
+        /* Adicionar estas regras CSS para garantir centralização perfeita */
+    .content-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 3rem 0;
+    }
+    
+    .calculator-container {
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto;
+    }
+    
+    /* Remova margens laterais que possam interferir */
+    .calculator-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Para telas menores */
+    @media (max-width: 768px) {
+        .calculator-container {
+            width: 95%;
+            padding: 0 10px;
+        }
+    }
