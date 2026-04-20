@@ -1,157 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Calculadora de Quilometragem | Ferramenta Profissional</title>
-    <meta name="description" content="Calculadora profissional para medição precisa de quilometragem com fórmula avançada">
-    <meta name="theme-color" content="#000000">
-    <meta property="og:title" content="Calculadora de Quilometragem Profissional">
-    <meta property="og:description" content="Calcule quilometragem com precisão usando nossa ferramenta profissional">
-    <meta property="og:type" content="website">
-    
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loader"></div>
-    </div>
-
-    <header class="header">
-        <div class="container text-center">
-            <div class="logo-area">
-                <div class="logo">
-                    <i class="fas fa-tachometer-alt"></i>
-                </div>
-                <h1>Calculadora de Quilometragem</h1>
-            </div>
-            <p class="lead">Meça a quilometragem de você sabe o que...</p>
-        </div>
-    </header>
-
-    <div class="content-wrap">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-7 col-xl-6">
-                    <div class="calculator-card card">
-                        <div class="card-header">
-                            <div>
-                                <i class="fas fa-calculator"></i> Calculadora Profissional
-                            </div>
-                            <div class="card-tools">
-                                <button id="resetButton" title="Redefinir formulário">
-                                    <i class="fas fa-sync-alt"></i> Redefinir
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                           <div id="formContainer">
-                                <form id="distanceForm">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="months" class="form-label">
-                                                <i class="far fa-calendar-alt"></i> Tempo em Meses (M)
-                                                <span class="input-info">
-                                                    <i class="fas fa-info-circle"></i>
-                                                    <span class="tooltip-text">Insira o número total de meses de atividade. Valor mínimo: 1.</span>
-                                                </span>
-                                            </label>
-                                            <input type="number" class="form-control" id="months" step="1" min="1" placeholder="Ex: 3">
-                                        </div>
-                                        
-                                        <div class="col-md-6 mb-3">
-                                            <label for="weekly" class="form-label">
-                                                <i class="fas fa-sync-alt"></i> Média Semanal (S)
-                                                <span class="input-info">
-                                                    <i class="fas fa-info-circle"></i>
-                                                    <span class="tooltip-text">Insira a frequência média por semana. Quanto maior, mais quilometragem.</span>
-                                                </span>
-                                            </label>
-                                            <input type="number" class="form-control" id="weekly" step="0.1" min="0" placeholder="Ex: 2.5">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-4">
-                                        <label for="size" class="form-label">
-                                            <i class="fas fa-ruler"></i> Tamanho (T)
-                                            <span class="input-info">
-                                                <i class="fas fa-info-circle"></i>
-                                                <span class="tooltip-text">Selecione um valor de 1 a 20 para o tamanho. Este valor multiplica o resultado final.</span>
-                                            </span>
-                                        </label>
-                                        <input type="range" class="form-range" id="size" min="1" max="20" step="1" aria-labelledby="sizeValue">
-                                        <div class="range-track">
-                                            <div class="range-labels">
-                                                <span>Pequeno</span>
-                                                <span>Médio</span>
-                                                <span>Grande</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-center" id="sizeValue">10</div>
-                                    </div>
-                                    
-                                    <div class="action-buttons">
-                                        <button type="submit" class="btn btn-primary w-100">
-                                            <i class="fas fa-calculator me-2"></i> Calcular Quilometragem
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            
-                            <div id="resultBox" class="result-box d-none">
-                                <h4 class="mb-4 result-title">Resultado</h4>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <p>Quilometragem Total</p>
-                                        <div class="kilometer-value"><span id="kilometers">0</span> km</div>
-                                    </div>
-                                </div>
-                                <hr class="my-3 opacity-25">
-                                <div class="row mt-3">
-                                    <div class="col-md-6 mb-3">
-                                        <p><strong>Fórmula:</strong></p>
-                                        <div class="formula">Kf = M × S × T × 19,2</div>
-                                        <p class="small-value mt-2">Kf = Quilometragem total em metros</p>
-                                        <p class="small-value">Resultado em km = Kf ÷ 1000</p>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <p><strong>Seus Valores:</strong></p>
-                                        <p class="small-value">Meses (M): <span id="mValue" class="value-highlight">0</span></p>
-                                        <p class="small-value">Média Semanal (S): <span id="sValue" class="value-highlight">0</span></p>
-                                        <p class="small-value">Tamanho (T): <span id="tValue" class="value-highlight">0</span></p>
-                                    </div>
-                                </div>
-                                <div class="result-actions">
-                                    <button id="copyResultBtn"><i class="fas fa-copy"></i> Copiar Resultado</button>
-                                    <button id="newCalcBtn"><i class="fas fa-calculator"></i> Nova Calculadora</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container text-center">
-            <p>© 2025 Calculadora de Quilometragem | Desenvolvido por Calvin Kisin | <span class="text-uppercase">Apenas para adultos (+18)</span></p>
-        </div>
-    </footer>
-
-    <div class="toast-container"></div>
-
-    <script src="assets/script.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" async></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculadora profissional para medição precisa de quilometragem" />
+    <meta name="theme-color" content="#080808" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Quilometragem — Calculadora Profissional</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
